@@ -1,0 +1,21 @@
+High G: 
+
+Feature ranking:
+1. feature 0 (0.166627)
+2. feature 4 (0.155357)
+3. feature 5 (0.142424)
+4. feature 3 (0.139795)
+5. feature 2 (0.139084)
+6. feature 1 (0.132096)
+7. feature 6 (0.124618)
+----------------
+Low G: 
+
+Feature ranking:
+1. feature 6 (0.189107)
+2. feature 0 (0.162821)
+3. feature 2 (0.144321)
+4. feature 5 (0.129528)
+5. feature 1 (0.129178)
+6. feature 3 (0.125868)
+7. feature 4 (0.119177)

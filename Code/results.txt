@@ -1,0 +1,73 @@
+High G: 
+
+Gaussian Naive Bayes: 
+Percenatage Correct: 0.450000
+Precision: 0.600000
+Recall: 0.461538
+FBeta 0.566038
+Area under the ROC curve : 0.508242
+
+DecisionTree: 
+Percenatage Correct: 0.600000
+Precision: 0.684211
+Recall: 0.565217
+FBeta 0.656566
+Area under the ROC curve : 0.612532
+
+KNeighbors: 
+Percenatage Correct: 0.575000
+Precision: 0.625000
+Recall: 0.652174
+FBeta 0.630252
+Area under the ROC curve : 0.538363
+
+RandomForest: 
+Percenatage Correct: 0.700000
+Precision: 0.769231
+Recall: 0.769231
+FBeta 0.769231
+Area under the ROC curve : 0.604396
+
+SVM: 
+Percenatage Correct: 0.650000
+Precision: 0.650000
+Recall: 1.000000
+FBeta 0.698925
+
+----------------
+Low G: 
+
+Gaussian Naive Bayes: 
+Percenatage Correct: 0.450000
+Precision: 0.600000
+Recall: 0.461538
+FBeta 0.566038
+Area under the ROC curve : 0.508242
+
+DecisionTree: 
+Percenatage Correct: 0.600000
+Precision: 0.692308
+Recall: 0.692308
+FBeta 0.692308
+Area under the ROC curve : 0.631868
+
+KNeighbors: 
+Percenatage Correct: 0.700000
+Precision: 0.769231
+Recall: 0.769231
+FBeta 0.769231
+Area under the ROC curve : 0.692308
+
+RandomForest: 
+Percenatage Correct: 0.625000
+Precision: 0.789474
+Recall: 0.576923
+FBeta 0.735294
+Area under the ROC curve : 0.611264
+
+SVM: 
+Percenatage Correct: 0.650000
+Precision: 0.650000
+Recall: 1.000000
+FBeta 0.698925
+

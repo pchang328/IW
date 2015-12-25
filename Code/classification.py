@@ -143,8 +143,8 @@ def convert_string_list_to_float_list(string_list):
 	return float_list		
 
 def main(args):
-	train_file = open('../Data/Train/train_new.txt')
-	test_file = open('../Data/Test/test_new.txt')
+	train_file = open('../Data/Train/train_final_bin.txt')
+	test_file = open('../Data/Test/test_final_bin.txt')
 
 	X = []; y_hi = []; y_lo = [];
 	result_lo_idx = 0
@@ -193,7 +193,7 @@ def main(args):
 	KNeighborsClassifier(X,y_lo, X_test, y_lo_test)
 	RandomForest(X, y_lo, X_test, y_lo_test)
 	SVM(X, y_lo, X_test, y_lo_test)
-	# treeFeatureImportance(np.array(X), np.array(y_lo))
+	treeFeatureImportance(np.array(X), np.array(y_lo))
 
 
 

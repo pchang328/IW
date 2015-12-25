@@ -39,15 +39,15 @@ def  SVM(X, y, XTest, yTest):
 def Linear_Regression(X, y, XTest, yTest):
 	from sklearn import linear_model
 	regr = linear_model.LinearRegression()
-	print XTest
-	print yTest
+	# print XTest
+	# print yTest
 	regr.fit(X, y)
-	print regr.predict(XTest)
+	# print regr.predict(XTest)
 
 	# The coefficients
 	print("Coefficients: \n", regr.coef_)
 	# print (regr.coef_[0] * XTest)
-	print ([i[0] *  regr.coef_[0]  for i in XTest])
+	# print ([i[0] *  regr.coef_[0]  for i in XTest])
 	# The mean square error
 	print("Residual sum of squares: %.5f"
 	      % np.mean((regr.predict(XTest) - yTest) ** 2))
@@ -81,8 +81,8 @@ def convert_string_list_to_float_list(string_list):
 	return float_list		
 
 def main(args):
-	train_file = open('../Data/Train/train_float.txt')
-	test_file = open('../Data/Test/test_float.txt')
+	train_file = open('../Data/Train/train_final.txt')
+	test_file = open('../Data/Test/test_final.txt')
 	feature_idx = int(args[1])
 
 	X = []; y_hi = []; y_lo = [];

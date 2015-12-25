@@ -89,8 +89,8 @@ def crop (image):
 def exp_func(x, a, b, c):
     return a * np.exp(-b * (x)) + c
 
-def exp_func_up(x, a, b):
-    return a * np.exp(b * x)
+def exp_func_up(x, a, b, c):
+    return a * np.exp(b * x) + c
 
 # Divides the reed into the edges and the center
 def divide_horizontal(col_int_list):
@@ -99,7 +99,12 @@ def divide_horizontal(col_int_list):
     right_idx_start = int(math.floor(0.75 * length))
     return (col_int_list[:l_edge_idx_end], col_int_list[l_edge_idx_end:right_idx_start], 
         col_int_list[right_idx_start:])
-    
+
+def list_to_string (l):
+    x = ""
+    for elt in l:
+        x = x + str(elt) + " "
+    return x
 
 def main(argv):
     list_of_files = glob.glob('../Reed_Pics/*.png')
@@ -132,39 +137,31 @@ def main(argv):
             plot_intensity_list(avg_intensity_list)
 
     if argv[0] == "-c":
-        for img in file_to_image.values():
+        for name, img in file_to_image.iteritems():
             avg_intensity_list = gen_avg_intensity_list_col(img)
             (l, m, r) = divide_horizontal(avg_intensity_list)
 
-            # xdata = np.array(range(len(l)))
-            # ydata = np.array(l)
-            # popt, pcov = curve_fit(exp_func, xdata, ydata)
+            # Graphing the exponential fit for left side of reed
+            xdata = np.array(range(len(l)))
+            ydata = np.array(l)
+            popt_l, pcov_l = curve_fit(exp_func, xdata, ydata)
             # plt.plot(exp_func(xdata, *popt))
             # plot_intensity_list(l) 
             # plt.show()
 
-            fx = np.array(range(len(r)))
-            fy = np.array(r)
+            # Graphing the exponential fit for right side of reed
+            xdata = np.array(range(len(r)))
+            ydata = np.array(r)
+            popt_r, pcov_r = curve_fit(exp_func_up, xdata, ydata, p0=(0.2, 0.2, 0.2))
+            # plt.plot(exp_func_up(xdata, *popt))
+            # plot_intensity_list(ydata)
+            # plt.show()
 
-            norm_x = fx.min()
-            norm_y = fy.max()
-            fx2 = fx - norm_x + 1
-            fy2 = fy/norm_y
-
-            popt, pcov = curve_fit(exp_func_up, fx2, fy2)
-            plt.plot(exp_func_up(fx, *popt))
-            plot_intensity_list(fy) 
-            plt.show()
-
-            # plot_intensity_list(avg_intensity_list) 
-            # plt.show()      
-            # plot_intensity_list(l) 
-            # plt.show()    
-            # plot_intensity_list(m) 
-            # plt.show()    
-            # plot_intensity_list(r) 
-            # plt.show()    
-                 
+            # Finding the variation in the middle portion 
+            std_m = np.std(m)
+            str_fitted = list_to_string(popt_l) + list_to_string(popt_r)
+            str_beg_end = str(l[0]) + " " + str(l[len(l) - 1]) + " " + str(r[0]) + " " + str(r[len(r) - 1]) + " " 
+            print name + " " + str_fitted + str_beg_end + str(std_m)
 
     plt.show()
 

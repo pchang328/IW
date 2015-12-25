@@ -2,10 +2,13 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import explained_variance_score
+from sklearn.metrics import r2_score
 
 def  DT(X, y, XTest, yTest):
+	print "Running DT"
 	from sklearn.tree import DecisionTreeRegressor
-	regr = DecisionTreeRegressor(random_state=0)
+	regr = DecisionTreeRegressor(random_state=1)
 	regr.fit(X, y)
 
 	# The mean square error
@@ -13,10 +16,16 @@ def  DT(X, y, XTest, yTest):
 	      % np.mean((regr.predict(XTest) - yTest) ** 2))
 	# Explained variance score: 1 is perfect prediction
 	print('R^2: %.2f' % regr.score(XTest, yTest))
+
+	y_true = yTest
+	y_pred = regr.predict(XTest)
+	print "Explained variance: " + str(explained_variance_score(y_true, y_pred))
+	print "R^2 Library: " + str(r2_score(y_true, y_pred))
 
 def  KNN(X, y, XTest, yTest):
+	print "Running KNN"
 	from sklearn.neighbors import KNeighborsRegressor
-	regr = KNeighborsRegressor(n_neighbors=10)
+	regr = KNeighborsRegressor(n_neighbors=5, weights='distance')
 	regr.fit(X, y)
 
 	# The mean square error
@@ -24,8 +33,14 @@ def  KNN(X, y, XTest, yTest):
 	      % np.mean((regr.predict(XTest) - yTest) ** 2))
 	# Explained variance score: 1 is perfect prediction
 	print('R^2: %.2f' % regr.score(XTest, yTest))
+	y_true = yTest
+	y_pred = regr.predict(XTest)
+	print "Explained variance: " + str(explained_variance_score(y_true, y_pred))
+	print "R^2 Library: " + str(r2_score(y_true, y_pred))
+
 
 def  SVM(X, y, XTest, yTest):
+	print "Running SVM"
 	from sklearn.svm import SVR
 	regr = SVR(C=1.0, epsilon=0.1)
 	regr.fit(X, y)
@@ -35,8 +50,14 @@ def  SVM(X, y, XTest, yTest):
 	      % np.mean((regr.predict(XTest) - yTest) ** 2))
 	# Explained variance score: 1 is perfect prediction
 	print('R^2: %.2f' % regr.score(XTest, yTest))
+	y_true = yTest
+	y_pred = regr.predict(XTest)
+	print "Explained variance: " + str(explained_variance_score(y_true, y_pred))
+	print "R^2 Library: " + str(r2_score(y_true, y_pred))
+
 
 def Linear_Regression(X, y, XTest, yTest):
+	print "Running Linear Regression"
 	from sklearn import linear_model
 	regr = linear_model.LinearRegression()
 	# print XTest
@@ -73,6 +94,11 @@ def Linear_Regression(X, y, XTest, yTest):
 	# 	plt.yticks(())
 
 	# 	plt.show()
+
+	y_true = yTest
+	y_pred = regr.predict(XTest)
+	print "Explained variance: " + str(explained_variance_score(y_true, y_pred))
+	print "R^2 Library: " + str(r2_score(y_true, y_pred))
 
 def convert_string_list_to_float_list(string_list):
 	float_list = []

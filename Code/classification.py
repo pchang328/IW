@@ -99,7 +99,7 @@ def RandomForest(X, y, XTest, yTest):
 
 def KNeighborsClassifier(X,y,XTest, yTest):
 	from sklearn.neighbors import KNeighborsClassifier
-	neigh = KNeighborsClassifier(n_neighbors=3)
+	neigh = KNeighborsClassifier(n_neighbors=3, weights='distance')
 	yPred =	neigh.fit(X, y).predict(XTest)
 	probas = neigh.fit(X, y).predict_proba(XTest)
 
